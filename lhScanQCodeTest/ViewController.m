@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "lhScanQCodeViewController.h"
+#import <Masonry.h>
 
 @interface ViewController ()
 
@@ -27,7 +28,16 @@
     [btn setBackgroundColor:[UIColor redColor]];
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    
+    UILabel *label = [[UILabel alloc]init];
+    [self.view addSubview:label];
+    label.text = @"请点击上方红色按钮";
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(btn.mas_bottom).offset(20);
+        make.centerX.equalTo(btn.mas_centerX);
+        
+    }];
+
     
     NSLog(@"%@%@%@",[[UIDevice currentDevice] name],[[UIDevice currentDevice] systemName],[[UIDevice currentDevice] systemVersion]);
     
